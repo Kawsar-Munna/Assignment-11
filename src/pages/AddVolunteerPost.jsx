@@ -32,7 +32,7 @@ const AddVolunteerPost = () => {
 
     try {
       setLoading(true);
-      const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/posts`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/posts`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
