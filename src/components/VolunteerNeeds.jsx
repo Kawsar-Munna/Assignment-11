@@ -15,7 +15,13 @@ const VolunteerNeeds = () => {
     fetch(`${import.meta.env.VITE_API_BASE_URL}/volunteer-posts`)
       .then((res) => res.json())
       .then((data) => {
-        const sorted = data.sort((a, b) => new Date(a.deadline) - new Date(b.deadline));
+        const today = new Date();
+        const filtered = data.filter(
+          (post) => new Date(post.deadline) >= today
+        );
+        const sorted = filtered.sort(
+          (a, b) => new Date(a.deadline) - new Date(b.deadline)
+        );
         setPosts(sorted);
         setLoading(false);
       })
@@ -26,21 +32,25 @@ const VolunteerNeeds = () => {
       });
   }, []);
 
-  if (loading)
-    return <Spinner />;
+  if (loading) return <Spinner />;
 
   if (!posts.length)
-    return <p className="text-center py-10 text-gray-500">No volunteer needs found.</p>;
+    return (
+      <p className="text-center py-10 text-gray-500">
+        No current volunteer opportunities found.
+      </p>
+    );
 
   return (
     <section className="py-10 px-5">
       <div className="max-w-7xl mx-auto p-4">
         <div className="mb-10 text-center">
           <h2 className="text-3xl md:text-4xl font-extrabold text-[#ffbd59] mb-2">
-          Volunteer Needs
+            Volunteer Needs
           </h2>
           <p className="text-black dark:text-white md:text-lg">
-            Here’s how you can contribute to local communities through volunteering.
+            Here’s how you can contribute to local communities through
+            volunteering.
           </p>
         </div>
 
@@ -82,11 +92,22 @@ const VolunteerNeeds = () => {
               {/* Info Section */}
               <div className="bg-[#070e22] px-4 py-4 space-y-4 text-sm text-white h-full">
                 {post.description && (
-                  <p className="text-lg mt-1 line-clamp-2 text-[#ffbd59]">{post.description}</p>
+                  <p className="text-lg mt-1 line-clamp-2 text-[#ffbd59]">
+                    {post.description}
+                  </p>
                 )}
-                <p><strong>Deadline:</strong> {new Date(post.deadline).toLocaleDateString()}</p>
-                {post.time && <p><strong>Time:</strong> {post.time}</p>}
-                <p><strong>Location:</strong> {post.location}</p>
+                <p>
+                  <strong>Deadline:</strong>{" "}
+                  {new Date(post.deadline).toLocaleDateString()}
+                </p>
+                {post.time && (
+                  <p>
+                    <strong>Time:</strong> {post.time}
+                  </p>
+                )}
+                <p>
+                  <strong>Location:</strong> {post.location}
+                </p>
 
                 {/* Buttons */}
                 <div className="flex justify-between mt-6">
@@ -99,7 +120,9 @@ const VolunteerNeeds = () => {
                         return;
                       }
                       if (!user) {
-                        toast.warning("You must be logged in to view post details.");
+                        toast.warning(
+                          "You must be logged in to view post details."
+                        );
                         return navigate("/login");
                       }
                       navigate(`/posts/${post._id}`);
@@ -118,7 +141,9 @@ const VolunteerNeeds = () => {
                       if (deadline >= today) {
                         navigate(`/be-a-volunteer/${post._id}`);
                       } else {
-                        toast.error("This post's deadline has passed. You cannot volunteer.");
+                        toast.error(
+                          "This post's deadline has passed. You cannot volunteer."
+                        );
                       }
                     }}
                     className="bg-gray-900 text-[#ffbd59] px-3 py-2 rounded hover:bg-gray-800 transition text-sm"

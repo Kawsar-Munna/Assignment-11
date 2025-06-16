@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { Helmet } from "react-helmet-async";
+import Spinner from "../components/Spinner";
 
 const ManageMyPosts = () => {
   const { user } = useAuth();
@@ -107,7 +108,7 @@ const ManageMyPosts = () => {
     }
   }, [user]);
 
-  if (loading) return <div className="text-center py-20 text-xl font-semibold">Loading...</div>;
+  if (loading) return <Spinner />;
 
   return (
     <>
