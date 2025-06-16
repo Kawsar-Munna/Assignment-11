@@ -81,9 +81,21 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Menu Toggle */}
-        <div className="md:hidden text-2xl cursor-pointer text-[#ffbd59]" onClick={toggleMenu}>
+        {/* <div className="md:hidden text-2xl cursor-pointer text-[#ffbd59]" onClick={toggleMenu}>
           {menuOpen ? <FiX /> : <FiMenu />}
-        </div>
+        </div> */}
+        <div className="md:hidden flex items-center gap-4 text-2xl text-[#ffbd59]">
+  <button
+    onClick={toggleTheme}
+    className="text-xl text-gray-700 dark:text-yellow-300 hover:scale-110 transition"
+    aria-label="Toggle Theme"
+  >
+    {darkMode ? <FiSun /> : <FiMoon />}
+  </button>
+  <div className="cursor-pointer" onClick={toggleMenu}>
+    {menuOpen ? <FiX /> : <FiMenu />}
+  </div>
+</div>
       </div>
 
       {/* Mobile Menu */}
@@ -94,12 +106,12 @@ const Navbar = () => {
           <NavLink to="/contact" className="block py-1" onClick={() => setMenuOpen(false)}>Contact</NavLink>
 
           {/* Theme Toggle */}
-          <button
+          {/* <button
             onClick={() => { toggleTheme(); setMenuOpen(false); }}
             className="flex items-center gap-2 mt-2"
           >
             {darkMode ? <FiSun /> : <FiMoon />} <span>Toggle Theme</span>
-          </button>
+          </button> */}
 
           {!user ? (
             <>
