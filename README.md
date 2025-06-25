@@ -1,12 +1,95 @@
-# React + Vite
+# 🌟 Volunteer Management Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack volunteer management platform that enables users to create, manage, and participate in volunteer opportunities.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📌 Project Overview
 
-## Expanding the ESLint configuration
+This application allows individuals or organizations to:
+- Post volunteer needs
+- Update or delete their posts
+- Sign up to be a volunteer for others' posts
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Includes protected routes, JWT authentication, and a responsive UI built with React and Tailwind CSS.
+
+---
+
+## 🔗 Live Website
+
+👉 [Live Demo](https://your-live-site-url.com)
+
+---
+
+## 🎯 Key Features
+
+### 👥 Authentication
+- Email & Password login/register
+- Social login (Google or GitHub)
+- JWT token-based route protection
+
+### 📝 Volunteer Posts
+- Add/Edit/Delete volunteer requests
+- View post details (protected)
+- Become a volunteer for posted opportunities
+
+### 🏠 Home Page
+- Eye-catching banner/slider with 3+ slides
+- "Volunteer Needs Now" section (sorted by deadline)
+- 2 additional meaningful sections
+- Framer Motion animation
+
+### 📋 Manage Posts
+- My Volunteer Posts (table format with edit/delete)
+- My Volunteer Requests (with cancel option)
+- Search functionality by title
+- Change layout (card ↔ table)
+
+### 🌗 UI/UX Enhancements
+- Responsive on all devices
+- Dark/Light mode toggle
+- Dynamic page titles
+- Custom 404 page
+- Loading spinners
+- Toast/SweetAlert notifications
+
+---
+
+## 🔐 Security & Deployment
+
+- Firebase config secured with `.env`
+- MongoDB URI hidden using environment variables
+- JWT token handling for protected API access
+- Deployed:
+  - Client: Firebase / Netlify
+  - Server: Vercel
+
+---
+
+## 🧰 Tech Stack
+
+### 🔹 Client
+- React
+- Tailwind CSS
+- React Router DOM
+- React Hook Form
+- React Toastify / SweetAlert
+- React Datepicker
+- Framer Motion
+- JWT Decode
+
+### 🔸 Server
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+- JWT
+- Dotenv
+- CORS
+
+---
+
+## 📦 NPM Packages Used
+
+```bash
+npm install react-router-dom axios react-hook-form framer-motion react-toastify react-datepicker jwt-decode dotenv cors express mongoose jsonwebtoken
